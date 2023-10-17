@@ -28,14 +28,14 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: APP_VERSION
-              value: "0.0.2"
-            - name: BG_COLOR
-              value: "darkgreen"
 #            - name: APP_VERSION
-#              value: "0.0.4"
+#              value: "0.0.2"
 #            - name: BG_COLOR
-#              value: "darkmagenta"
+#              value: "darkgreen"
+            - name: APP_VERSION
+              value: "0.0.4"
+            - name: BG_COLOR
+              value: "darkmagenta"
             - name: K8_POD_ID
               valueFrom:
                 fieldRef:
