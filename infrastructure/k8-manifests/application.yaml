@@ -1,0 +1,54 @@
+# Create a new namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: osi
+
+---
+
+# Define the Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osi-gitops-workshop
+  namespace: osi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: osi-gitops-workshop
+  template:
+    metadata:
+      labels:
+        app: osi-gitops-workshop
+    spec:
+      containers:
+        - name: osi-gitops-workshop
+          image: rajmayank/osi-gitops-workshop
+          ports:
+            - containerPort: 3000
+          env:
+            - name: APP_VERSION
+              value: "0.0.2"
+            - name: BG_COLOR
+              value: "red"
+            - name: K8_POD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+---
+
+# Define a Service to expose the Deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: osi-gitops-workshop-service
+  namespace: osi
+spec:
+  selector:
+    app: osi-gitops-workshop
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: NodePort

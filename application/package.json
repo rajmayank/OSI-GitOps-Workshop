@@ -6,8 +6,9 @@
   "scripts": {
     "start": "echo 'Please visit http://localhost:3000/' && node app.js",
     "start:v1": "echo 'Please visit http://localhost:3000/' && APP_VERSION=1.0.0 node app.js",
-    "build:image": "docker build -t osi-gitops-app .",
-    "start:image": "docker run -p 3000:3000 -e BG_COLOR=teal osi-gitops-app"
+    "image:build": "docker build -t osi-gitops-app .",
+    "image:start": "docker run -p 3000:3000 -e BG_COLOR=teal osi-gitops-app",
+    "image:push": "docker tag osi-gitops-app:latest rajmayank/osi-gitops-workshop:latest && docker push rajmayank/osi-gitops-workshop:latest"
   },
   "author": "Mayank Raj <hello@mayankraj.com>",
   "license": "MIT",

@@ -1,2 +1,3 @@
 # OSI-GitOps-Workshop
-resource for OSI Workshop
+
+Resource for OSI Workshop
