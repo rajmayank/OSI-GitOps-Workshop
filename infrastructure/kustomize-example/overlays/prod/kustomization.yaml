@@ -1,0 +1,10 @@
+namePrefix: prod-
+commonLabels:
+  env: prod
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: Deployment
+      name: osi-app
+    path: patch.yaml

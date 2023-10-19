@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/replicas
+  value: 4
+- op: add
+  path: /spec/template/spec/containers/-
+  value:
+    name: logging-sidecar
+    image: rsyslog:latest

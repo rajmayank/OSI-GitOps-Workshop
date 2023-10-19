@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    inject/credentials: true
+    inject/logging: true
+spec:
+  containers:
+    - name: nginx
+      ...
+      volumeMounts:
+        - name: shared-creds
+          ...
+        - name: shared-logs
+          ...
+    - name: auth-module
+      ...
+      volumeMounts:
+        - name: shared-creds
+          ...
+    - name: rsyslog
+      ...
+      volumeMounts:
+        - name: shared-logs
+          ...
+  volumes:
+  - name: shared-creds
+    ...
+  - name: shared-logs
+    ...
+

@@ -1,0 +1,4 @@
+commonLabels:
+  app: osi-app
+resources:
+  - deployment.yaml
